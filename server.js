@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const favicon = require("serve-favicon");
 const logger = require("morgan");
+const ensureLoggedIn = require("./config/ensureLoggedIn");
 // Always require and config near top of file
 require('dotenv').config()
 //Connect to db
@@ -16,14 +17,12 @@ app.use(express.json());
 // to serve from the production 'build' folder
 app.use(favicon(path.join(__dirname, "build", "favicon.ico")));
 app.use(express.static(path.join(__dirname, "build")));
-// Middle to check/verify a JWT and 
-// and assign user obj to req.user
-app.use(require('./config/check-token'))
 
 const port = process.env.PORT || 3001;
 
 //Put API routes here, before the 'catch all'
 app.use('/api/users', require('./routes/api/users'))
+app.use('/api/posts', ensureLoggedIn, require('./routes/api/posts'))
 
 //The following 'catch-all' route(not the *) is necessary
 //to return the index.html on all non AJAX requests

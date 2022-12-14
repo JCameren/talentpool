@@ -43,14 +43,7 @@ const login = async (req, res) => {
   }
 }
 
-const checkToken = (req, res) => {
-  // verify middle is doing its job
-  console.log('req.user', req.user)
-  res.json(req.exp)
-}
-
 module.exports = {
   create,
   login,
-  checkToken
 };

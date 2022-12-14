@@ -4,32 +4,33 @@ import { getUser } from "../../utilities/users-service";
 import NewOrderPage from "../NewOrder/index";
 import AuthPage from "../Auth/index";
 import OrderHistoryPage from "../OrderHistory/index";
-import Navbar from "../../components/Navbar";
+import Layout from "../../components/Layout/index";
 import "./index.css";
 
 const App = () => {
   const [user, setUser] = useState(getUser());
 
   const logOutUser = (user) => {
-    setUser(user)
-  }
+    setUser(user);
+  };
 
   const signInUser = (userData) => {
-    setUser(userData)
-  }
+    setUser(userData);
+  };
   return (
     <main className="App">
       {user ? (
         <>
-          <Navbar user={user} setUser={logOutUser} />
-          <Routes>
-            {/* Route components in here */}
-            <Route path="/orders" element={<OrderHistoryPage />} />
-            <Route path="/orders/new" element={<NewOrderPage />} />
-          </Routes>
+          <Layout user={user} setUser={logOutUser}>
+            <Routes>
+              {/* Route components in here */}
+              <Route path="/orders" element={<OrderHistoryPage />} />
+              <Route path="/orders/new" element={<NewOrderPage />} />
+            </Routes>
+          </Layout>
         </>
       ) : (
-        <AuthPage setUser={signInUser}/>
+        <AuthPage setUser={signInUser} />
       )}
     </main>
   );

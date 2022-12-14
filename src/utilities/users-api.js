@@ -9,8 +9,3 @@ export const signUp = async (userData) => {
 export const login = async (userData) => {
   return sendRequest(`${BASE_URL}/login`, 'POST', userData)
 }
-
-
-export const checkToken = async () => {
-  return sendRequest(`${BASE_URL}/check-token`)
-}

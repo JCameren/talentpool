@@ -5,6 +5,7 @@ export default class SignUpForm extends Component {
   state = {
     name: "",
     email: "",
+    accountType: "",
     password: "",
     confirm: "",
     error: "",
@@ -20,10 +21,11 @@ export default class SignUpForm extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { name, email, password } = this.state;
+      const { name, email, password, accountType } = this.state;
       const formData = {
         name,
         email,
+        accountType,
         password,
       };
       // The promise returned by the signUp method
@@ -61,6 +63,11 @@ export default class SignUpForm extends Component {
               onChange={this.handleChange}
               required
             />
+            <label>Account Type</label>
+            <select name="accountType" required>
+              <option value="Employer">Employer</option>
+              <option value="Seeker">Seeker</option>
+            </select>
             <label>Password</label>
             <input
               type="password"

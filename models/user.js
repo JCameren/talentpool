@@ -18,6 +18,11 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    accountType: {
+      type: String,
+      enum: ["Employer", "Seeker"],
+      required: true
+    }
   },
   {
     timestamps: true,
