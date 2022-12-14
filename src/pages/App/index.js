@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { getUser } from "../../utilities/users-service";
-import NewOrderPage from "../NewOrder/index";
 import AuthPage from "../Auth/index";
 import Layout from "../../components/Layout/index";
 import "./index.css";
@@ -27,7 +26,6 @@ const App = () => {
             <Routes>
               {/* Route components in here */}
               <Route path="/" element={<HomePage />} />
-              <Route path="/orders/new" element={<NewOrderPage />} />
               <Route path="/post/:postId" element={<PostDetailsPage />} />
               <Route path="/account/:userId" element={<AccountPage />} />
             </Routes>
