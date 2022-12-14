@@ -3,9 +3,11 @@ import { Routes, Route } from "react-router-dom";
 import { getUser } from "../../utilities/users-service";
 import NewOrderPage from "../NewOrder/index";
 import AuthPage from "../Auth/index";
-import OrderHistoryPage from "../OrderHistory/index";
 import Layout from "../../components/Layout/index";
 import "./index.css";
+import HomePage from "../Homepage/index";
+import AccountPage from '../AccountPage/index'
+import PostDetailsPage from '../PostDetailsPage/index'
 
 const App = () => {
   const [user, setUser] = useState(getUser());
@@ -24,13 +26,17 @@ const App = () => {
           <Layout user={user} setUser={logOutUser}>
             <Routes>
               {/* Route components in here */}
-              <Route path="/orders" element={<OrderHistoryPage />} />
+              <Route path="/" element={<HomePage />} />
               <Route path="/orders/new" element={<NewOrderPage />} />
+              <Route path="/post/:postId" element={<PostDetailsPage />} />
+              <Route path="/account/:userId" element={<AccountPage />} />
             </Routes>
           </Layout>
         </>
-      ) : (
-        <AuthPage setUser={signInUser} />
+      ) : ( 
+        <Routes>
+          <Route path="/" element={<AuthPage setUser={signInUser}/>} />
+        </Routes>
       )}
     </main>
   );
