@@ -63,11 +63,6 @@ export default class SignUpForm extends Component {
               onChange={this.handleChange}
               required
             />
-            <label>Account Type</label>
-            <select name="accountType" required>
-              <option value="Employer">Employer</option>
-              <option value="Seeker">Seeker</option>
-            </select>
             <label>Password</label>
             <input
               type="password"

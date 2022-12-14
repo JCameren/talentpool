@@ -7,6 +7,7 @@ import "./index.css";
 import HomePage from "../Homepage/index";
 import AccountPage from '../AccountPage/index'
 import PostDetailsPage from '../PostDetailsPage/index'
+import NewPostPage from '../NewPostPage/index'
 
 const App = () => {
   const [user, setUser] = useState(getUser());
@@ -26,8 +27,9 @@ const App = () => {
             <Routes>
               {/* Route components in here */}
               <Route path="/" element={<HomePage />} />
+              <Route path="/post" element={<NewPostPage />} />
               <Route path="/post/:postId" element={<PostDetailsPage />} />
-              <Route path="/account/:userId" element={<AccountPage />} />
+              <Route path="/account/" element={<AccountPage  user={user}/>} />
             </Routes>
           </Layout>
         </>

@@ -1,8 +1,8 @@
 import React from 'react'
 
-const AccountPage = () => {
+const AccountPage = ({ user }) => {
   return (
-    <div>AccountPage</div>
+    <div>{user.name}</div>
   )
 }
 

@@ -11,6 +11,8 @@ const postSchema = new Schema({
         required: true
     },
     applicants: [{ type: Schema.Types.ObjectId, ref: "User" }]
+}, {
+    timestamps: true
 })
 
 module.exports = mongoose.model("Post", postSchema)

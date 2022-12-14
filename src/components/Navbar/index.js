@@ -9,9 +9,10 @@ const Navbar = ({ user, setUser }) => {
   }
   return (
     <nav>
-      <Link to='/orders'>Order History</Link>
+      <Link to="/">Logo</Link>
+      <Link to='/account'>Profile Page</Link>
+      <Link to='/post'>Create Job Listing</Link>
       &nbsp; | &nbsp;
-      <Link to='/orders/new'>New Order</Link>
       <h2>Welcome, {user.name}</h2>
       <Link  onClick={handleLogOut}>Log Out</Link>
     </nav>
