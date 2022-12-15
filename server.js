@@ -18,6 +18,8 @@ app.use(express.json());
 app.use(favicon(path.join(__dirname, "build", "favicon.ico")));
 app.use(express.static(path.join(__dirname, "build")));
 
+app.use(require('./config/check-token'))
+
 const port = process.env.PORT || 3001;
 
 //Put API routes here, before the 'catch all'
