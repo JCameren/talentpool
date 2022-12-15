@@ -21,6 +21,10 @@ const App = () => {
     }
     getPosts()
   }, [])
+
+  const addPost = (newPost) => {
+    setPosts([...posts, newPost])
+  }
   
 
   const logOutUser = (user) => {
@@ -38,8 +42,8 @@ const App = () => {
             <Routes>
               {/* Route components in here */}
               <Route path="/" element={<HomePage posts={posts} />} />
-              <Route path="/post" element={<NewPostPage />} />
-              <Route path="/post/:postId" element={<PostDetailsPage />} />
+              <Route path="/post" element={<NewPostPage addPost={addPost}/>} />
+              <Route path="/post/:postId" element={<PostDetailsPage user={user} posts={posts} />} />
               <Route path="/account" element={<AccountPage  user={user}/>} />
             </Routes>
           </Layout>

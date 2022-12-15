@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as postAPI from '../../utilities/post-api'
 
-const NewPostForm = () => {
+const NewPostForm = ({ addPost }) => {
   const navigate = useNavigate()
   const [postData, setPostData] = useState({
     title: "",
@@ -18,6 +18,7 @@ const NewPostForm = () => {
     e.preventDefault()
     try {
         const post = await postAPI.create(postData)
+        addPost(post)
         if (post) {
             navigate("/")
         }
@@ -29,11 +30,11 @@ const NewPostForm = () => {
     <form onSubmit={addNewPost}>
       <h3>Create new job listing</h3>
       <label htmlFor="">Job Title</label>
-      <input type="text" name="title" value={title} onChange={handleChange} />
+      <input type="text" name="title" value={title} onChange={handleChange} required/>
       <label htmlFor="">Salary</label>
-      <input type="text" name="salary" value={salary} onChange={handleChange} />
+      <input type="text" name="salary" value={salary} onChange={handleChange} required/>
       <label htmlFor="">Job Description</label>
-      <input type="text" name="description" value={description} onChange={handleChange} />
+      <input type="text" name="description" value={description} onChange={handleChange} required/>
       <button type="submit">Create Post</button>
     </form>
   );

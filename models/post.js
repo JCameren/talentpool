@@ -8,7 +8,6 @@ const postSchema = new Schema({
     employer: {
         type: Schema.Types.ObjectId,
         ref: "User",
-        required: true
     },
     applicants: [{ type: Schema.Types.ObjectId, ref: "User" }]
 }, {

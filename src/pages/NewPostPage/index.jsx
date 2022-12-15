@@ -1,9 +1,9 @@
 import React from 'react'
 import NewPostForm from '../../components/NewPostForm'
 
-const NewPostPage = () => {
+const NewPostPage = ({ addPost }) => {
   return (
-    <NewPostForm />
+    <NewPostForm addPost={addPost} />
   )
 }
 
