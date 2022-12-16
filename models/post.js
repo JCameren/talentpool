@@ -9,7 +9,7 @@ const postSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "User",
     },
-    applicants: [{ type: Schema.Types.ObjectId, ref: "User" }]
+    applicants: [{ type: Schema.Types.ObjectId, ref: "User", required: true }]
 }, {
     timestamps: true
 })

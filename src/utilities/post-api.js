@@ -13,3 +13,7 @@ export const show = async (postId) => {
 export const create = async (postData) => {
     return sendRequest(BASE_URL, 'POST', postData)
 }
+
+export const getPostsApplied = async () => {
+    return sendRequest(`${BASE_URL}/account`)
+}
