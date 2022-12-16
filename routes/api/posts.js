@@ -5,6 +5,8 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn')
 
 router.get('/account', ensureLoggedIn, postsCtrl.getPostsApplied)
 
+router.put('/:id', ensureLoggedIn, postsCtrl.appliedToJobPost)
+
 router.get('/:id', postsCtrl.show)
 
 router.get('/', postsCtrl.index)

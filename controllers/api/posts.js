@@ -22,9 +22,16 @@ const getPostsApplied = async (req, res) => {
     res.json(posts)
 }
 
+const appliedToJobPost = async (req, res, next) => {
+    req.body.applicants = req.user._id
+    const post = await Post.findByIdAndUpdate({_id: req.params.id, }, req.body).populate('employer').exec()
+    res.json(post)
+}
+
 module.exports = {
     create,
     index,
     show,
-    getPostsApplied
+    getPostsApplied,
+    appliedToJobPost
 }

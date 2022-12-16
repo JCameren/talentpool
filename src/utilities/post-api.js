@@ -17,3 +17,7 @@ export const create = async (postData) => {
 export const getPostsApplied = async () => {
     return sendRequest(`${BASE_URL}/account`)
 }
+
+export const applyToJob = async (postId, post) => {
+    return sendRequest(`${BASE_URL}/${postId}`, "PUT", post)
+}
