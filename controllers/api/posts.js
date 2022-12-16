@@ -18,11 +18,8 @@ const show = async (req, res) => {
 }
 
 const getPostsApplied = async (req, res) => {
-    console.log(req.user._id)
     const posts = await Post.find({applicants: req.user._id})
-    // if (!posts) res.json(null)
     res.json(posts)
-    // console.log(posts)
 }
 
 module.exports = {
