@@ -1,10 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import * as postAPI from "../../utilities/post-api";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const AccountPage = ({ user }) => {
-  const navigate = useNavigate()
   const [posts, setPosts] = useState([]);
   const [jobListings, setJobListings] = useState([]);
   useEffect(() => {
