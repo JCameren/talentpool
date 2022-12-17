@@ -21,3 +21,11 @@ export const getPostsApplied = async () => {
 export const applyToJob = async (postId, post) => {
     return sendRequest(`${BASE_URL}/${postId}`, "PUT", post)
 }
+
+export const getJobListings = async () => {
+    return sendRequest(`${BASE_URL}/jobs`)
+}
+
+export const deleteJobListing = async (postId) => {
+    return sendRequest(`${BASE_URL}/${postId}`, "DELETE")
+}

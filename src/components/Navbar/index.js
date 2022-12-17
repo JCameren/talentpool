@@ -1,11 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import * as userService from '../../utilities/users-service'
 
 const Navbar = ({ user, setUser }) => {
+  const navigate = useNavigate()
   const handleLogOut = () => {
     userService.logOut()
     setUser(null)
+    navigate('/')
   }
   return (
     <nav>

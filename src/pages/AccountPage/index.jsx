@@ -1,10 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import * as postAPI from "../../utilities/post-api";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const AccountPage = ({ user }) => {
+  const navigate = useNavigate()
   const [posts, setPosts] = useState([]);
+  const [jobListings, setJobListings] = useState([]);
   useEffect(() => {
     const getPosts = async () => {
       const postFetched = await postAPI.getPostsApplied();
@@ -12,6 +14,20 @@ const AccountPage = ({ user }) => {
     };
     getPosts();
   }, []);
+
+  useEffect(() => {
+    const getJobsListed = async () => {
+      const jobsListingsFetched = await postAPI.getJobListings();
+      setJobListings(jobsListingsFetched);
+    };
+    getJobsListed();
+  }, []);
+
+  const deleteJobListing = async (postId) => {
+    const deletedJobListing = await postAPI.deleteJobListing(postId)
+    setJobListings(jobListings.filter((jobListing) => jobListing._id !== deletedJobListing._id))
+  }
+
   return (
     <>
       <div>Hello {user.name}</div>
@@ -36,6 +52,18 @@ const AccountPage = ({ user }) => {
         ))
       ) : (
         <h1>You haven't applied to any jobs.</h1>
+      )}
+      <hr />
+      {jobListings.length > 0 ? (
+        jobListings.map((joblisting) => (
+          <div>
+            <h2>{joblisting.title}</h2>
+            <p>{joblisting.applicants.name}</p>
+            <button onClick={() => deleteJobListing(joblisting._id)}>Delete Job Listing</button>
+          </div>
+        ))
+      ) : (
+        <h2>You have not listed any jobs.</h2>
       )}
     </>
   );

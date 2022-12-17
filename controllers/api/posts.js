@@ -28,10 +28,22 @@ const appliedToJobPost = async (req, res, next) => {
     res.json(post)
 }
 
+const getJobsListed = async (req, res) => {
+    const jobsPosted = await Post.find({employer: req.user._id}).populate('applicants').exec()
+    res.json(jobsPosted)
+}
+
+const deleteJobListing = async (req, res) => {
+    const deletedJobListing = await Post.findByIdAndDelete({_id: req.params.id})
+    res.json(deletedJobListing)
+}
+
 module.exports = {
     create,
     index,
     show,
     getPostsApplied,
-    appliedToJobPost
+    appliedToJobPost,
+    getJobsListed,
+    deleteJobListing
 }
