@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import { BsThreeDotsVertical } from 'react-icons/bs'
 import { Link, useNavigate } from "react-router-dom";
 import * as userService from "../../utilities/users-service";
-import { NavHeader, Logo, NavLink } from "./style";
+import { NavHeader, Logo, NavLink, MobileNavBtn } from "./style";
 import { Spacer, Flex, Container, Button } from "../../ui";
+import Overlay from '../../components/Overlay/index'
 import logo from "../../images/logo.png";
 
 const Navbar = ({ user, setUser }) => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("");
+  const [sideNavActive, setSideNavActive] = useState(false)
 
   const ProfileTabActive = () => {
     setActiveTab("account")
@@ -17,6 +20,10 @@ const Navbar = ({ user, setUser }) => {
     setActiveTab("post")
   }
 
+  const sideNavStateHandler = () => {
+    setSideNavActive(prevState => !prevState)
+  }
+
   const handleLogOut = () => {
     userService.logOut();
     setUser(null);
@@ -24,6 +31,7 @@ const Navbar = ({ user, setUser }) => {
   };
   return (
     <>
+      { sideNavActive  && <Overlay onClick={sideNavStateHandler}/>}
       <NavHeader>
         <Container large>
           <Flex as="nav" spaceBetween>
@@ -31,7 +39,7 @@ const Navbar = ({ user, setUser }) => {
               <img src={logo} alt="website logo" />
             </Logo>
             { user && 
-                         <ul>
+                         <ul className='nav-elements'>
                          <NavLink
                            as={Link}
                            to="/post"
@@ -52,7 +60,10 @@ const Navbar = ({ user, setUser }) => {
                          {/* <Link onClick={handleLogOut}>Log Out</Link> */}
                        </ul>
              }
-             { !user && <Button as={Link} to="/login">Sign In</Button> }
+             { !user && <ul className="nav-elements"><Button as={Link} to="/login">Sign In</Button></ul> }
+             <MobileNavBtn>
+                <BsThreeDotsVertical onClick={sideNavStateHandler}/>
+             </MobileNavBtn>
           </Flex>
         </Container>
       </NavHeader>

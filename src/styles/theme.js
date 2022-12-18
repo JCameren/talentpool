@@ -10,7 +10,7 @@ export const lightTheme = {
     },
     fontSizes: {
         lg: 'clamp(2.625rem, 1.2857rem + 3.5714vw, 4rem)',
-        md: 'clamp(1.5, 5vw, 1.75rem)',
+        md: 'clamp(2, 5vw, 2.25rem)',
         sm: 'clamp(0.9rem, 3vw, 1rem)',
         xs: 'clamp(0.75rem, 2vw, 0.8rem)'
     },
@@ -45,5 +45,11 @@ export const GlobalStyle = createGlobalStyle`
 
     img {
         all: unset;
+    }
+
+    @media (max-width: 480px) {
+        .nav-elements {
+            display: none;
+        }
     }
 `

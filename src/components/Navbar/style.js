@@ -16,6 +16,12 @@ export const Logo = styled.div`
         min-width: 2rem;
         max-width: 4.5rem;
     }
+
+    @media (max-width: 480px) {
+        ul {
+            display: none;
+        } 
+    }
 `
 
 export const NavLink = styled.a`
@@ -30,5 +36,28 @@ export const NavLink = styled.a`
     .active {
         font-weight: 700 !important;
         color: ${({ theme }) => theme.colors.primary[0]} !important;
+    }
+`
+
+export const MobileNav = styled.nav`
+    
+`
+
+export const MobileNavBtn = styled.button`
+    all: unset;
+    /* display: none; */
+    color: ${({ theme }) => theme.colors.primary[0]};
+    font-size: ${({ theme }) => theme.fontSizes.md};
+    transition: all 250ms ease-in-out;
+    padding: 1rem;
+    border-radius: ${({ theme }) => theme.borderRadii.subtle};
+
+    &:hover {
+        color: ${({ theme }) => theme.colors.primary[1]};
+        background-color: ${({ theme }) => theme.colors.fg};
+    }
+
+    @media (max-width: 480px) {
+        display: block;
     }
 `
