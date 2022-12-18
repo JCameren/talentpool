@@ -3,14 +3,13 @@ import { Routes, Route } from "react-router-dom";
 import { getUser } from "../../utilities/users-service";
 import AuthPage from "../Auth/index";
 import Layout from "../../components/Layout/index";
-// import "./index.css";
 import HomePage from "../Homepage/index";
 import AccountPage from "../AccountPage/index";
 import PostDetailsPage from "../PostDetailsPage/index";
 import NewPostPage from "../NewPostPage/index";
 import * as postAPI from "../../utilities/post-api";
-import "../../styles/theme.css";
-import "../../styles/resets.css";
+import { ThemeProvider } from "styled-components";
+import { lightTheme, GlobalStyle } from "../../styles/theme";
 
 const App = () => {
   const [user, setUser] = useState(getUser());
@@ -36,9 +35,10 @@ const App = () => {
     setUser(userData);
   };
   return (
-    <main className="App">
+    <main>
       {user ? (
-        <>
+        <ThemeProvider theme={lightTheme}>
+          <GlobalStyle />
           <Layout user={user} setUser={logOutUser}>
             <Routes>
               {/* Route components in here */}
@@ -51,11 +51,14 @@ const App = () => {
               <Route path="/account" element={<AccountPage user={user} />} />
             </Routes>
           </Layout>
-        </>
+        </ThemeProvider>
       ) : (
-        <Routes>
-          <Route path="/" element={<AuthPage setUser={signInUser} />} />
-        </Routes>
+        <ThemeProvider theme={lightTheme}>
+          <GlobalStyle />
+          <Routes>
+             <Route path="/" element={<AuthPage setUser={signInUser} />} />
+          </Routes>
+        </ThemeProvider>
       )}
     </main>
   );
