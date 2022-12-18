@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { getUser } from "../../utilities/users-service";
 import AuthPage from "../Auth/index";
 import Layout from "../../components/Layout/index";
@@ -7,11 +7,13 @@ import HomePage from "../Homepage/index";
 import AccountPage from "../AccountPage/index";
 import PostDetailsPage from "../PostDetailsPage/index";
 import NewPostPage from "../NewPostPage/index";
+import LoginInPage from "../LoginInPage/index";
 import * as postAPI from "../../utilities/post-api";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, GlobalStyle } from "../../styles/theme";
 
 const App = () => {
+  const navigate = useNavigate()
   const [user, setUser] = useState(getUser());
   const [posts, setPosts] = useState([]);
 
@@ -33,6 +35,7 @@ const App = () => {
 
   const signInUser = (userData) => {
     setUser(userData);
+    navigate('/')
   };
   return (
     <main>
@@ -55,9 +58,15 @@ const App = () => {
       ) : (
         <ThemeProvider theme={lightTheme}>
           <GlobalStyle />
-          <Routes>
-             <Route path="/" element={<AuthPage setUser={signInUser} />} />
-          </Routes>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<AuthPage setUser={signInUser} />} />
+              <Route
+                path="/login"
+                element={<LoginInPage signInUser={signInUser} />}
+              />
+            </Routes>
+          </Layout>
         </ThemeProvider>
       )}
     </main>

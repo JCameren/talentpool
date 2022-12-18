@@ -37,7 +37,7 @@ export const Button = styled.a`
     border-radius: ${({ theme }) => theme.borderRadii.subtle};
     font-size: ${({ theme }) => theme.fontSizes.md};
     color: ${({ theme }) => theme.colors.bg};
-    font-weight: 500;
+    font-weight: 700;
     border: none;
     background-color: ${({ theme }) => theme.colors.primary[0]};
     transition: all 250ms ease-in-out;
@@ -45,6 +45,7 @@ export const Button = styled.a`
     align-items: center;
     justify-content: center;
     column-gap: 0.25rem;
+    padding: 0.75rem;
 
     &:hover {
         background-color: ${({ theme }) => theme.colors.primary[1]};
