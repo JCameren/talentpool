@@ -7,7 +7,7 @@ import hero from "../../images/homepage-hero-banner.svg";
 const AuthPage = ({ setUser }) => {
   return (
     <Container large>
-      <Flex alCenter flexStart spaceBetween>
+      <Flex alCenter flexEnd spaceBetween>
         {/* <h1>AuthPage</h1> */}
         <HeroBanner>
           <img src={hero} alt="hero banner" />

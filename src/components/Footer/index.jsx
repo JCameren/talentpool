@@ -7,7 +7,7 @@ import logo from "../../images/logo-2.png";
 const Footer = () => {
   return (
     <>
-      <Spacer small />
+      <Spacer large />
       <FooterWrapper>
         <Container large>
           <Flex spaceBetween alCenter>

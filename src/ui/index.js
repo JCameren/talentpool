@@ -23,7 +23,9 @@ export const Flex = styled.div`
     display: flex;
     align-items: ${({ alCenter }) => alCenter ? 'center' : null};
     align-items: ${({ flexStart }) => flexStart ? 'flex-start' : null};
+    align-items: ${({ flexEnd }) => flexEnd ? 'flex-end' : null};
     flex-wrap: wrap;
+    row-gap: 0.5rem;
     justify-content: ${({ spaceBetween }) => spaceBetween ? 'space-between': null};
     flex-direction: ${({ column }) => column ? 'column' : 'row'};
 `
@@ -101,7 +103,7 @@ export const Text = styled.p`
 export const BigText = styled(Text)`
     font-size: ${({ theme }) => theme.fontSizes.lg};
     color: ${({ theme }) => theme.colors.text[1]};
-    font-weight: 700;
+    font-weight: bold;
 `
 
 export const MediumText = styled(Text)`
