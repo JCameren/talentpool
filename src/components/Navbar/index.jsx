@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BsThreeDotsVertical } from 'react-icons/bs'
 import { Link, useNavigate } from "react-router-dom";
 import * as userService from "../../utilities/users-service";
@@ -56,14 +56,15 @@ const Navbar = ({ user, setUser }) => {
                          >
                            Profile
                          </NavLink>
-                         <Button onClick={handleLogOut}>log Out</Button>
+                         <Button onClick={handleLogOut}>Log Out</Button>
                          {/* <Link onClick={handleLogOut}>Log Out</Link> */}
                        </ul>
              }
-             { !user && <ul className="nav-elements"><Button as={Link} to="/login">Sign In</Button></ul> }
+             { !user && <ul className="nav-elements"><Button as={Link} to="/login">Login</Button></ul> }
              <MobileNavBtn>
                 <BsThreeDotsVertical onClick={sideNavStateHandler}/>
-             </MobileNavBtn>
+             </MobileNavBtn> 
+             
           </Flex>
         </Container>
       </NavHeader>

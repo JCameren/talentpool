@@ -30,6 +30,19 @@ export const Flex = styled.div`
 export const Grid = styled.div`
     display: grid;
     align-items: center;
+    grid-template-columns: repeat(4, 1fr);
+
+    @media (max-width: 900px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 700) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 500px) {
+        grid-template-columns: 1fr;
+    }
 `
 
 export const Button = styled.a`
@@ -53,7 +66,7 @@ export const Button = styled.a`
 `
 
 export const Card = styled.section`
-    border-radius: ${({ theme }) => theme.borderradii.subtle};
+    border-radius: ${({ theme }) => theme.borderRadii.subtle};
     border: thin solid ${({ theme }) => theme.colors.muted};
     padding: 0.5rem;
     transition: all 250ms ease-in-out;
@@ -80,19 +93,23 @@ export const Spacer = styled.div`
     }
 `
 
-export const BigText = styled.p`
+export const Text = styled.p`
+    text-align: ${({ center }) => center ? 'center' : null};
+`
+
+export const BigText = styled(Text)`
     font-size: ${({ theme }) => theme.fontSizes.lg};
     color: ${({ theme }) => theme.colors.text[1]};
     font-weight: 700;
 `
 
-export const MediumText = styled.p`
+export const MediumText = styled(Text)`
     font-size: ${({ theme }) => theme.fontSizes.md}; 
     color: ${({ theme }) => theme.colors.text[0]};
     font-weight: 500;
 `
 
-export const SmallText = styled.p`
+export const SmallText = styled(Text)`
     font-size: ${({ theme }) => theme.fontSizes.sm};
     color: ${({ theme }) => theme.colors.text[0]};
     font-weight: 100;

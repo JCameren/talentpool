@@ -1,11 +1,9 @@
 import styled from "styled-components";
 
 export const NavHeader = styled.header`
-    position: fixed;
-    left: 0;
-    top: 0;
     width: 100%;
-    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+    position: fixed;
+    border-bottom: thin solid ${({ theme }) => theme.colors.muted};
     padding: 0.65rem;
     background-color: ${({ theme }) => theme.colors.bg};
 `
@@ -26,6 +24,7 @@ export const Logo = styled.div`
 
 export const NavLink = styled.a`
     margin-right: 3rem;
+    font-weight: 500;
     font-size: ${({ theme }) => theme.fontSizes.sm};
     transition: all 250ms ease-in-out;
 
@@ -40,12 +39,14 @@ export const NavLink = styled.a`
 `
 
 export const MobileNav = styled.nav`
-    
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    border-radius: ${({ theme }) => theme.borderRadii.subtle};
+    background-color: ${({ theme }) => theme.colors.fg};
 `
 
 export const MobileNavBtn = styled.button`
     all: unset;
-    /* display: none; */
+    display: none;
     color: ${({ theme }) => theme.colors.primary[0]};
     font-size: ${({ theme }) => theme.fontSizes.md};
     transition: all 250ms ease-in-out;

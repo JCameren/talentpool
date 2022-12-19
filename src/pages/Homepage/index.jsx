@@ -1,22 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { BigText, SmallText, Spacer, Container } from "../../ui";
+import JobPosts from "../../components/JobPosts";
 
-const HomePage = ({ posts }) => {
-  
+const HomePage = ({ user, posts }) => {
   return (
     <>
-       {/* Add container component to clean this up possibly */}
-      { posts.map(post => (
-        <Link to={`/post/${post._id}`}>
-        <div  key={post._id} style={{ width: 'max-content', borderRadius: '5px', border: 'thin dashed black' }}>
-          <h3>{post.title}</h3>
-          <h3>{post.salary}</h3>
-          <h3>{post.description}</h3>
-          <h4>Posted by: {post.employer.name}</h4>
-          <h4>Posted on: {post.createdAt.toLocaleString()}</h4>
-        </div>
-        </Link>
-      )) }
+      <Container large>
+        <BigText>Welcome back, {user.name}!</BigText>
+        <Spacer small />
+        <SmallText>
+          Browse the latest listing posted to the site here. Click on one to view the details and apply.
+        </SmallText>
+      </Container>
+      <Spacer medium />
+      <JobPosts posts={posts} />
     </>
   );
 };

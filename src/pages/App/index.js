@@ -45,7 +45,7 @@ const App = () => {
           <Layout user={user} setUser={logOutUser}>
             <Routes>
               {/* Route components in here */}
-              <Route path="/" element={<HomePage posts={posts} />} />
+              <Route path="/" element={<HomePage user={user} posts={posts} />} />
               <Route path="/post" element={<NewPostPage addPost={addPost} />} />
               <Route
                 path="/post/:postId"
