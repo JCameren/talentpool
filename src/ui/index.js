@@ -25,7 +25,7 @@ export const Flex = styled.div`
     align-items: ${({ flexStart }) => flexStart ? 'flex-start' : null};
     align-items: ${({ flexEnd }) => flexEnd ? 'flex-end' : null};
     flex-wrap: wrap;
-    row-gap: 0.5rem;
+    row-gap: ${({ largeRowGap }) => largeRowGap ? '3rem' : null};
     justify-content: ${({ spaceBetween }) => spaceBetween ? 'space-between': null};
     flex-direction: ${({ column }) => column ? 'column' : 'row'};
 `
