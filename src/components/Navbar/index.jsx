@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BsThreeDotsVertical } from 'react-icons/bs'
 import { Link, useNavigate } from "react-router-dom";
 import * as userService from "../../utilities/users-service";
 import { NavHeader, Logo, NavLink, MobileNavBtn } from "./style";
-import { Spacer, Flex, Container, Button } from "../../ui";
+import { Spacer, Flex, Container, Button, MediumText } from "../../ui";
 import Overlay from '../../components/Overlay/index'
 import logo from "../../images/logo.png";
 

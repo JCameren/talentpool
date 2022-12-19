@@ -1,4 +1,6 @@
 import { Component } from "react";
+import { Container, Flex, Spacer, Card, Button, XSText } from "../../ui";
+import { Input } from "./styles";
 import { signUp } from '../../utilities/users-service'
 
 export default class SignUpForm extends Component {
@@ -44,48 +46,58 @@ export default class SignUpForm extends Component {
   render() {
     const disable = this.state.password !== this.state.confirm;
     return (
-      <div>
-        <div className="form-container">
-          <form autoComplete="off" onSubmit={this.handleSubmit}>
-            <label>Name</label>
-            <input
+      <>
+        <Container small>
+          <Card as='form' autoComplete="off" onSubmit={this.handleSubmit}>
+            <Flex column>
+            <XSText>Name</XSText>
+            <Spacer extraSmall />
+            <Input
               type="text"
               name="name"
               value={this.state.name}
               onChange={this.handleChange}
               required
             />
-            <label>Email</label>
-            <input
+            <Spacer small />
+            <XSText>Email</XSText>
+            <Spacer extraSmall />
+            <Input
               type="email"
               name="email"
               value={this.state.email}
               onChange={this.handleChange}
               required
             />
-            <label>Password</label>
-            <input
+            <Spacer small />
+            <XSText>Password</XSText>
+            <Spacer extraSmall />
+            <Input
               type="password"
               name="password"
               value={this.state.password}
               onChange={this.handleChange}
               required
             />
-            <label>Confirm</label>
-            <input
+            <Spacer small />
+            <XSText>Confirm</XSText>
+            <Spacer extraSmall />
+            <Input
               type="password"
               name="confirm"
               value={this.state.confirm}
               onChange={this.handleChange}
               required
             />
-            <button type="submit" disabled={disable}>
-              SIGN UP
-            </button>
-          </form>
-        </div>
+            <Spacer small />
+            <Button type="submit" disabled={disable} wide>
+              Sign Up
+            </Button >
+            </Flex>
+          </Card>
+        </Container>
         <p className="error-message"> {this.state.error}</p>
-      </div>
+      </>
     );
   }
 }

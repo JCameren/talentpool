@@ -21,7 +21,8 @@ export const Container = styled.div`
 
 export const Flex = styled.div`
     display: flex;
-    align-items: center;
+    align-items: ${({ alCenter }) => alCenter ? 'center' : null};
+    align-items: ${({ flexStart }) => flexStart ? 'flex-start' : null};
     flex-wrap: wrap;
     justify-content: ${({ spaceBetween }) => spaceBetween ? 'space-between': null};
     flex-direction: ${({ column }) => column ? 'column' : 'row'};

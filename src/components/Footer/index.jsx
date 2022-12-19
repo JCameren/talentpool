@@ -1,6 +1,8 @@
 import React from "react";
-import { Container, Flex, Spacer } from "../../ui/index";
+import { Logo } from "../Navbar/style";
+import { Container, Flex, Spacer, XSText } from "../../ui/index";
 import { FooterWrapper } from "./styles";
+import logo from "../../images/logo-2.png";
 
 const Footer = () => {
   return (
@@ -8,7 +10,12 @@ const Footer = () => {
       <Spacer small />
       <FooterWrapper>
         <Container large>
-          <div>Footer here</div>
+          <Flex spaceBetween alCenter>
+            <Logo>
+              <img src={logo} alt="logo" />
+            </Logo>
+            <XSText>&copy; 2022 Talentpool All Rights Reserved</XSText>
+          </Flex>
         </Container>
       </FooterWrapper>
     </>
