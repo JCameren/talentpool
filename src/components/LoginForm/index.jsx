@@ -32,7 +32,8 @@ export default function LoginForm({ signInUser }) {
   return (
     <>
       <Container small>
-        <Card as="form" autoComplete="off" onSubmit={handleSubmit}>
+        <Card>
+          <form autoComplete="off" onSubmit={handleSubmit}>
           <Flex column>
             <MediumText as="label">Email</MediumText>
             <Spacer extraSmall />
@@ -54,10 +55,11 @@ export default function LoginForm({ signInUser }) {
               required
             />
             <Spacer small />
-            <Button type="submit" wide>
+            <Button as="button" type="submit" wide>
               Log In
             </Button>
           </Flex>
+          </form>
         </Card>
       </Container>
       <p className="error-message">&nbsp;{error}</p>

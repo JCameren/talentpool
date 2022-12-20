@@ -9,6 +9,7 @@ export const Input = styled.input`
     font-size: ${({ theme }) => theme.fontSizes.sm};
     color: ${({ theme }) => theme.colors.text[0]};
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    resize: none;
 
     &:focus {
         border: thin solid ${({ theme }) => theme.colors.primary[0]} !important;

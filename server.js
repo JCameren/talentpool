@@ -24,7 +24,7 @@ const port = process.env.PORT || 3001;
 
 //Put API routes here, before the 'catch all'
 app.use('/api/users', require('./routes/api/users'))
-app.use('/api/posts', ensureLoggedIn, require('./routes/api/posts'))
+app.use('/api/posts', require('./routes/api/posts'))
 
 //The following 'catch-all' route(not the *) is necessary
 //to return the index.html on all non AJAX requests

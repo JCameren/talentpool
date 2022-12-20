@@ -98,6 +98,7 @@ export const Spacer = styled.div`
 
 export const Text = styled.p`
     text-align: ${({ center }) => center ? 'center' : null};
+    font-weight: ${({ bold }) => bold ? 'bold' : null};
 `
 
 export const BigText = styled(Text)`
