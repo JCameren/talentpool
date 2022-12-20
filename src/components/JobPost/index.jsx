@@ -7,7 +7,7 @@ import { SalaryFocusSpan, DateSpan } from './styles'
 const JobPost = ({ post }) => {
   const { _id, title, company, location, salary, createdAt } = post;
   const date = new Date(createdAt)
-  const formattedDate = date.toLocaleString('en-GB', {day:'numeric', month: 'long', year:'numeric'})
+  const formattedDate = date.toLocaleString('en-US', {day:'numeric', month: 'long', year:'numeric'})
   return (
     <Link to={`/post/${_id}`}>
       <Card>
