@@ -76,6 +76,7 @@ const NewPostForm = ({ addPost }) => {
             onChange={handleChange}
             required
           />
+          <Spacer small />
           <XSText as="label">Location</XSText>
           <Spacer extraSmall />
           <Input

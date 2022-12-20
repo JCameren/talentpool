@@ -110,13 +110,12 @@ export const BigText = styled(Text)`
 export const MediumText = styled(Text)`
     font-size: ${({ theme }) => theme.fontSizes.md}; 
     color: ${({ theme }) => theme.colors.text[0]};
-    font-weight: 500;
+    font-weight: bold;
 `
 
 export const SmallText = styled(Text)`
-    font-size: ${({ theme }) => theme.fontSizes.sm};
+    font-size: 14px;
     color: ${({ theme }) => theme.colors.text[0]};
-    font-weight: 100;
 ` 
 
 export const XSText = styled.p`

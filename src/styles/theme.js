@@ -47,6 +47,11 @@ export const GlobalStyle = createGlobalStyle`
         all: unset;
     }
 
+    textarea {
+        resize: none;
+        min-height: 8rem;
+    }
+
     @media (max-width: 480px) {
         .nav-elements {
             display: none;
