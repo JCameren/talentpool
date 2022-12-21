@@ -17,6 +17,7 @@ import {
 import { RxAvatar } from "react-icons/rx";
 import { GiPaperClip } from "react-icons/gi";
 import { SalaryFocusSpan } from "../../components/JobPost/styles";
+import Seo from "../../components/Seo";
 
 const AccountPage = ({ user }) => {
   const [posts, setPosts] = useState([]);
@@ -53,6 +54,14 @@ const AccountPage = ({ user }) => {
 
   return (
     <>
+      <Seo
+        title={user.name}
+        description={
+          user.type === "seeker"
+            ? "View jobs you have applied to here."
+            : "View career opportunities you have listed."
+        }
+      />
       <Container large>
         <Flex column alCenter>
           <BigText>
