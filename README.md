@@ -15,7 +15,7 @@
 </div>
 </div>
 <h3 style="margin-top: 1rem">Homepage</h3>
-<p>After creating an account or logging in, the user will be directed to the home page, which features an index of all current job listings created by employers. Selecting any of these listings will redirect the user to the details page, where the full job description may be viewed.</p>
+<p>After creating an account or logging in, the user will be directed to the home page, which features an index of all current job listings created by employers. Selecting any of these listings will redirect the user to the details page, where the full job description may be viewed.</p>  
 <div style="object-fit: contain; max-height: max-content; width: 100%; background-color: #665DF5; padding: 0.5rem">
 <div style="object-fit: contain; width: 40%; margin: 0 auto">
 <img  src="public/images/homepage-ss.png" />
