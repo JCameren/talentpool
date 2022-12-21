@@ -16,3 +16,10 @@
 <p>On the details page, users are able to fully examine the job summary, requirements, and qualifications for the selected listing. To apply, users may simply press the apply button located at the bottom of the page. It is worth noting that the original poster and any applicants who have already applied will not be eligible to submit additional applications.</p>
 <h3 style="margin-top: 1rem">Submitting and The Profile Page</h3>
 <p>Finally applying to a job listing, the user will be redirected to their account page (if they are not already there). On this page, users can view a list of all the job postings to which they have applied, including their most recent application. Employers, on the other hand, will be able to view a list of all job listings they have posted, with the option to delete any of them as needed.</p>
+<h2 style="margin-top: 2rem">👨‍💻 Tech Stack</h2>
+
+<h2 style="margin-top: 2rem">📝 Planning</h2>
+
+<h2 style="margin-top: 2rem">🏆 Key Takeaways</h2>
+
+<h2 style="margin-top: 2rem">🧊 Icebox</h2>
