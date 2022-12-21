@@ -35,6 +35,8 @@ export const Grid = styled.div`
     display: grid;
     align-items: center;
     grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    /* max-height: 15rem; */
 
     @media (max-width: 900px) {
         grid-template-columns: repeat(3, 1fr);
@@ -80,6 +82,8 @@ export const Card = styled.section`
     padding: 0.5rem;
     transition: all 250ms ease-in-out;
     cursor: pointer;
+    min-height: 11rem;
+    /* max-height: 15rem; */
 
     &:hover {
         border-color: ${({ theme }) => theme.colors.primary[0]};
