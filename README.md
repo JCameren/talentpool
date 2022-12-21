@@ -19,21 +19,24 @@
 <p>After creating an account or logging in, the user will be directed to the home page, which features an index of all current job listings created by employers. Selecting any of these listings will redirect the user to the details page, where the full job description may be viewed.</p>  
 <div style="object-fit: contain; max-height: max-content; width: 100%; background-color: #665DF5; padding: 0.5rem">
 <div style="object-fit: contain; width: 40%; margin: 0 auto">
-<img  src="public/images/homepage-ss.png" />
+
+![This is an image](public/images/homepage-ss.PNG)
 </div>
 </div>
 <h3 style="margin-top: 1rem">Job Details and Applying</h3>
 <p>On the details page, users are able to fully examine the job summary, requirements, and qualifications for the selected listing. To apply, users may simply press the apply button located at the bottom of the page. It is worth noting that the original poster and any applicants who have already applied will not be eligible to submit additional applications.</p>
 <div style="object-fit: contain; max-height: max-content; width: 100%; background-color: #665DF5; padding: 0.5rem">
 <div style="object-fit: contain; width: 40%; margin: 0 auto">
-<img  src="public/images/detailpage-ss.png" />
+
+![This is an image](public/images/detailpage-ss.PNG)
 </div>
 </div>
 <h3 style="margin-top: 1rem">Submitting and The Profile Page</h3>
 <p>Finally applying to a job listing, the user will be redirected to their account page (if they are not already there). On this page, users can view a list of all the job postings to which they have applied, including their most recent application. Employers, on the other hand, will be able to view a list of all job listings they have posted, with the option to delete any of them as needed.</p>
 <div style="object-fit: contain; max-height: max-content; width: 100%; background-color: #665DF5; padding: 0.5rem">
 <div style="object-fit: contain; width: 40%; margin: 0 auto">
-<img  src="public/images/profilepage-ss.png" />
+
+![This is an image](public/images/profilepage-ss.PNG)
 </div>
 </div>
 <h2 style="margin-top: 4rem">👨‍💻 Tech Stack</h2>
