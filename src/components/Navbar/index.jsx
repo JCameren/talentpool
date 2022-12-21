@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import * as userService from "../../utilities/users-service";
-import { NavHeader, Logo, NavLink, MobileNavBtn } from "./style";
+import { NavHeader, Logo, NavLink, MobileNavBtn, MobileNav } from "./style";
 import { Spacer, Flex, Container, Button, MediumText } from "../../ui";
 import Overlay from "../../components/Overlay/index";
 import logo from "../../images/logo.png";
@@ -28,10 +28,52 @@ const Navbar = ({ user, setUser }) => {
     userService.logOut();
     setUser(null);
     navigate("/");
+    sideNavStateHandler()
   };
   return (
     <>
       {sideNavActive && <Overlay onClick={sideNavStateHandler} />}
+      {sideNavActive && (
+                <MobileNav>
+                  {user && (
+                <>
+                {user.type === "employer" && (
+                  <>
+                  <Spacer small />
+                  <NavLink
+                    as={Link}
+                    to="/post"
+                    onClick={sideNavStateHandler}
+                    className={activeTab === "post" ? "active" : ""}
+                  >
+                    Create Job Posting
+                  </NavLink>
+                  <Spacer small />
+                  </>
+                )}
+                <NavLink
+                  as={Link}
+                  to="/account"
+                  onClick={sideNavStateHandler}
+                  className={activeTab === "account" ? "active" : ""}
+                >
+                  Profile
+                </NavLink>
+                <Spacer small />
+                <Button onClick={handleLogOut}>Log Out</Button>
+                {/* <Link onClick={handleLogOut}>Log Out</Link> */}
+                </>
+            )}
+            
+            {!user && (
+              <ul>
+                <Button as={Link} to="/login">
+                  Login
+                </Button>
+              </ul>
+            )}
+                </MobileNav>
+              )}
       <NavHeader>
         <Container large>
           <Flex as="nav" spaceBetween>
