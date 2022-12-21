@@ -11,7 +11,8 @@
 <p>Upon arriving at the application, users are presented with the option to create an account in order to utilize the full range of its features. Alternatively, users who already have an account may select the login button to be redirected to the sign in page.</p>
 <div style="object-fit: contain; max-height: max-content; width: 100%; padding: 0.5rem" bgcolor="#665DF5">
 <div style="object-fit: contain; width: 40%; margin: 0 auto">
-![This is an image](public/images/landingpage-ss.png)
+
+![This is an image](/public/images/landingpage-ss.png)
 </div>
 </div>
 <h3 style="margin-top: 1rem">Homepage</h3>
