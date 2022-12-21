@@ -12,7 +12,7 @@
 <div style="object-fit: contain; max-height: max-content; width: 100%; padding: 0.5rem" bgcolor="#665DF5">
 <div style="object-fit: contain; width: 40%; margin: 0 auto">
 
-![This is an image](public/images/landingpage-ss.png)
+![This is an image](public/images/landingpage-ss.PNG)
 </div>
 </div>
 <h3 style="margin-top: 1rem">Homepage</h3>
