@@ -41,6 +41,8 @@
 </div>
 <h2 style="margin-top: 4rem">👨‍💻 Tech Stack</h2>
 
+[![My Skills](https://skillicons.dev/icons?i=react,mongodb,nodejs,expressjs,heroku)](https://skillicons.dev)
+
 <h2 style="margin-top: 4rem">📝 Planning</h2>
 <a href="https://trello.com/b/dWfPLffG/sei-project-4" target="_blank" rel="noopener noreferrer">Trello Board</a>
 
