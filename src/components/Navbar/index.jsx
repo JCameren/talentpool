@@ -40,6 +40,16 @@ const Navbar = ({ user, setUser }) => {
             </Logo>
             {user && (
               <ul className="nav-elements">
+                {user?.type === "employer" && (
+                  <NavLink
+                    as={Link}
+                    to="/post"
+                    onClick={JobPostCreationTabActive}
+                    className={activeTab === "post" ? "active" : ""}
+                  >
+                    Create Job Posting
+                  </NavLink>
+                )}
                 <NavLink
                   as={Link}
                   to="/account"
@@ -52,16 +62,7 @@ const Navbar = ({ user, setUser }) => {
                 {/* <Link onClick={handleLogOut}>Log Out</Link> */}
               </ul>
             )}
-            {user.type === "employer" && (
-              <NavLink
-                as={Link}
-                to="/post"
-                onClick={JobPostCreationTabActive}
-                className={activeTab === "post" ? "active" : ""}
-              >
-                Create Job Posting
-              </NavLink>
-            )}
+
             {!user && (
               <ul className="nav-elements">
                 <Button as={Link} to="/login">

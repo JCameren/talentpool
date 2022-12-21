@@ -1,8 +1,11 @@
-import React from 'react'
+import { Helmet } from "react-helmet"
 
-const Seo = () => {
+const Seo = ({ title, description }) => {
   return (
-    <div>Seo</div>
+    <Helmet>
+      <title>{`${title} | Talentpool`}</title>
+      <meta  name="description" content={description} />
+    </Helmet>
   )
 }
 

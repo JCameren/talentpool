@@ -27,6 +27,7 @@ export const Flex = styled.div`
     flex-wrap: wrap;
     row-gap: ${({ largeRowGap }) => largeRowGap ? '3rem' : null};
     justify-content: ${({ spaceBetween }) => spaceBetween ? 'space-between': null};
+    justify-content: ${({ jcCenter }) => jcCenter ? 'center': null};
     flex-direction: ${({ column }) => column ? 'column' : 'row'};
 `
 

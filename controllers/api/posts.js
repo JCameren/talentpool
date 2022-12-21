@@ -38,6 +38,12 @@ const deleteJobListing = async (req, res) => {
     res.json(deletedJobListing)
 }
 
+const unapplyFromPost = async (req, res) => {
+    const post = await Post.find({ _id: req.params.id })
+    post.applicants?.remove(req.user._id)
+    res.json(post)
+}
+
 module.exports = {
     create,
     index,
@@ -45,5 +51,6 @@ module.exports = {
     getPostsApplied,
     appliedToJobPost,
     getJobsListed,
-    deleteJobListing
+    deleteJobListing,
+    unapplyFromPost
 }

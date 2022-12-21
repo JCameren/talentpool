@@ -2,6 +2,21 @@ import React from "react";
 import { useState, useEffect } from "react";
 import * as postAPI from "../../utilities/post-api";
 import { Link } from "react-router-dom";
+import {
+  Container,
+  Flex,
+  Grid,
+  BigText,
+  MediumText,
+  SmallText,
+  XSText,
+  Spacer,
+  Card,
+  Button,
+} from "../../ui";
+import { RxAvatar } from "react-icons/rx";
+import { GiPaperClip } from "react-icons/gi";
+import { SalaryFocusSpan } from "../../components/JobPost/styles";
 
 const AccountPage = ({ user }) => {
   const [posts, setPosts] = useState([]);
@@ -14,6 +29,11 @@ const AccountPage = ({ user }) => {
     getPosts();
   }, []);
 
+  const unapplyFromPost = async (postId) => {
+    const unappliedFromPost = await postAPI.unapplyFromPost(postId);
+    setPosts(posts.filter((post) => post._id !== unappliedFromPost._id));
+  };
+
   useEffect(() => {
     const getJobsListed = async () => {
       const jobsListingsFetched = await postAPI.getJobListings();
@@ -23,47 +43,80 @@ const AccountPage = ({ user }) => {
   }, []);
 
   const deleteJobListing = async (postId) => {
-    const deletedJobListing = await postAPI.deleteJobListing(postId)
-    setJobListings(jobListings.filter((jobListing) => jobListing._id !== deletedJobListing._id))
-  }
+    const deletedJobListing = await postAPI.deleteJobListing(postId);
+    setJobListings(
+      jobListings.filter(
+        (jobListing) => jobListing._id !== deletedJobListing._id
+      )
+    );
+  };
 
   return (
     <>
-      <div>Hello {user.name}</div>
-      {posts.length > 0 ? (
-        posts.map((post) => (
-          <Link to={`/post/${post._id}`}>
-            <div
-              key={post._id}
-              style={{
-                width: "max-content",
-                borderRadius: "5px",
-                border: "thin dashed black",
-              }}
-            >
-              <h3>{post.title}</h3>
-              <h3>{post.salary}</h3>
-              <h3>{post.description}</h3>
-              <h4>Posted by: {post.employer.name}</h4>
-              <h4>Posted on: {post.createdAt.toLocaleString()}</h4>
-            </div>
-          </Link>
-        ))
-      ) : (
-        <h1>You haven't applied to any jobs.</h1>
-      )}
-      <hr />
-      {jobListings.length > 0 ? (
-        jobListings.map((joblisting) => (
-          <div>
-            <h2>{joblisting.title}</h2>
-            <p>{joblisting.applicants.name}</p>
-            <button onClick={() => deleteJobListing(joblisting._id)}>Delete Job Listing</button>
-          </div>
-        ))
-      ) : (
-        <h2>You have not listed any jobs.</h2>
-      )}
+      <Container large>
+        <Flex column alCenter>
+          <BigText>
+            <RxAvatar />
+          </BigText>
+          <MediumText>Hey, {user.name}!</MediumText>
+        </Flex>
+      </Container>
+      <Spacer small />
+      <Container large>
+        <Grid>
+          {user?.type === "seeker" && posts.length > 0
+            ? posts.map((post) => (
+                <>
+                  <Link to={`/post/${post._id}`}>
+                    <Card>
+                      <Flex alCenter spaceBetween>
+                        <MediumText>{post.title}</MediumText>
+                        <MediumText>
+                          <GiPaperClip />
+                        </MediumText>
+                      </Flex>
+                      <Spacer extraSmall />
+                      <SmallText>{post.company}</SmallText>
+                      <Spacer extraSmall />
+                      <SmallText>{post.location}</SmallText>
+                      <Spacer extraSmall />
+                      <SmallText>
+                        <SalaryFocusSpan>{post.salary}</SalaryFocusSpan>
+                      </SmallText>
+                      <Spacer extraSmall />
+                    </Card>
+                  </Link>
+                </>
+              ))
+            : null}
+          {user?.type === "employer" && jobListings.length > 0
+            ? jobListings.map((listing) => (
+                <Link to={`/post/${listing._id}`}>
+                  <Card>
+                    <Flex alCenter spaceBetween>
+                      <MediumText>{listing.title}</MediumText>
+                      <MediumText>
+                        <GiPaperClip />
+                      </MediumText>
+                    </Flex>
+                    <Spacer extraSmall />
+                    <SmallText>{listing.company}</SmallText>
+                    <Spacer extraSmall />
+                    <SmallText>{listing.location}</SmallText>
+                    <Spacer extraSmall />
+                    <SmallText>
+                      <SalaryFocusSpan>{listing.salary}</SalaryFocusSpan>
+                    </SmallText>
+                    <Spacer extraSmall />
+                    <Button onClick={() => deleteJobListing(listing._id)}>
+                      Delete Job Listing
+                    </Button>
+                  </Card>
+                </Link>
+              ))
+            : null}
+        </Grid>
+      </Container>
     </>
   );
 };

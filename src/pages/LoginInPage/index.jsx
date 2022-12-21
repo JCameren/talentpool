@@ -1,10 +1,16 @@
-import React from 'react'
-import LoginForm from '../../components/LoginForm'
+import Seo from "../../components/Seo/index";
+import LoginForm from "../../components/LoginForm";
 
 const LoginInPage = ({ signInUser }) => {
   return (
-    <LoginForm  signInUser={signInUser}/>
-  )
-}
+    <>
+      <Seo
+        title="Sign In"
+        description="Continue your journey where you left off!"
+      />
+      <LoginForm signInUser={signInUser} />
+    </>
+  );
+};
 
-export default LoginInPage
+export default LoginInPage;

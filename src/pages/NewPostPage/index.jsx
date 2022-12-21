@@ -1,10 +1,16 @@
-import React from 'react'
-import NewPostForm from '../../components/NewPostForm'
+import Seo from "../../components/Seo/index";
+import NewPostForm from "../../components/NewPostForm";
 
 const NewPostPage = ({ addPost }) => {
   return (
-    <NewPostForm addPost={addPost} />
-  )
-}
+    <>
+      <Seo
+        title="New Job Listing"
+        description="Create a new listing for the next career opportunity!"
+      />
+      <NewPostForm addPost={addPost} />
+    </>
+  );
+};
 
-export default NewPostPage
+export default NewPostPage;

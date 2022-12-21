@@ -9,6 +9,8 @@ router.get('/jobs', ensureLoggedIn, postsCtrl.getJobsListed)
 
 router.put('/:id', ensureLoggedIn, postsCtrl.appliedToJobPost)
 
+router.delete('/:id/unapply', ensureLoggedIn, postsCtrl.unapplyFromPost)
+
 router.get('/:id', postsCtrl.show)
 
 router.get('/', postsCtrl.index)

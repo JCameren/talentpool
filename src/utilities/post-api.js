@@ -29,3 +29,7 @@ export const getJobListings = async () => {
 export const deleteJobListing = async (postId) => {
     return sendRequest(`${BASE_URL}/${postId}`, "DELETE")
 }
+
+export const unapplyFromPost = async (postId) => {
+    return sendRequest(`${BASE_URL}/${postId}/unapply`, "DELETE")
+}
