@@ -13,7 +13,7 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme, GlobalStyle } from "../../styles/theme";
 
 const App = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [user, setUser] = useState(getUser());
   const [posts, setPosts] = useState([]);
 
@@ -30,12 +30,12 @@ const App = () => {
   };
 
   const logOutUser = (user) => {
-    setUser(user);
+    setUser(user)   
   };
 
   const signInUser = (userData) => {
     setUser(userData);
-    navigate('/')
+    navigate("/");
   };
   return (
     <main>
@@ -45,7 +45,10 @@ const App = () => {
           <Layout user={user} setUser={logOutUser}>
             <Routes>
               {/* Route components in here */}
-              <Route path="/" element={<HomePage user={user} posts={posts} />} />
+              <Route
+                path="/"
+                element={<HomePage user={user} posts={posts} />}
+              />
               <Route path="/post" element={<NewPostPage addPost={addPost} />} />
               <Route
                 path="/post/:postId"
