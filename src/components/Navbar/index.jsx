@@ -28,7 +28,7 @@ const Navbar = ({ user, setUser }) => {
     userService.logOut();
     setUser(null);
     navigate("/");
-    sideNavStateHandler()
+    // sideNavStateHandler()
   };
   return (
     <>
