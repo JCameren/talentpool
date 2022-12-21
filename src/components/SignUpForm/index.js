@@ -16,7 +16,7 @@ export default class SignUpForm extends Component {
   state = {
     name: "",
     email: "",
-    accountType: "",
+    type: "seeker",
     password: "",
     confirm: "",
     error: "",
@@ -32,13 +32,15 @@ export default class SignUpForm extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { name, email, password, accountType } = this.state;
+      const { name, email, password, type } = this.state;
+      // type = ["employer", "seeker"]
       const formData = {
         name,
         email,
-        accountType,
+        type,
         password,
       };
+      
       // The promise returned by the signUp method
       // will resolve to the user object included
       // in the payload of the JSON Web Token (JWT)
@@ -47,7 +49,6 @@ export default class SignUpForm extends Component {
       this.props.setUser(user);
     } catch {
       // An err occured
-      // Probably due to duplicate email
       this.setState({ error: "Sign-up failed. Try again." });
     }
   };
@@ -89,6 +90,12 @@ export default class SignUpForm extends Component {
                 required
               />
               <Spacer small />
+              <XSText>I am ...</XSText>
+              <Input as="select" value={this.state.type} onChange={this.handleChange} name="type" required>
+                <Input  as="option" value="seeker">Looking for a Job</Input>
+                <Input  as="option" value="employer">Looking for Talent</Input>
+              </Input>
+              <Spacer small />
               <XSText>Password</XSText>
               <Spacer extraSmall />
               <Input
@@ -109,13 +116,13 @@ export default class SignUpForm extends Component {
                 required
               />
               <Spacer small />
-              <Button type="submit" disabled={disable} wide>
+              <Button type="submit" as="button" disabled={disable} wide>
                 Sign Up
               </Button>
             </Flex>
           </Card>
+          <p className="error-message"> {this.state.error}</p>
         </Container>
-        <p className="error-message"> {this.state.error}</p>
       </>
     );
   }

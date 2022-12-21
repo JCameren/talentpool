@@ -13,6 +13,7 @@ const create = async (req, res) => {
   try {
     // Add user to db
     const user = await User.create(req.body)
+    console.log(user)
     const token = createJWT(user)
     res.json(token)
   } catch (err) {

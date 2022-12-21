@@ -62,9 +62,14 @@ export const Button = styled.a`
     justify-content: center;
     column-gap: 0.25rem;
     padding: 0.75rem;
+    color: ${({ secondary }) => secondary ? '#665df5' : null};
+    background-color: ${({ secondary }) => secondary ? '#a0d8ef' : null};
+    cursor: ${({ secondary }) => secondary ? 'default' : null} !important;
 
     &:hover {
         background-color: ${({ theme }) => theme.colors.primary[1]};
+        background-color: ${({ secondary }) => secondary ? '#a0d8ef' : null};
+
     }
 `
 
