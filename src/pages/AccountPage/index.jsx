@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import * as postAPI from "../../utilities/post-api";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Container,
   Flex,
@@ -20,6 +20,7 @@ import { SalaryFocusSpan } from "../../components/JobPost/styles";
 import Seo from "../../components/Seo";
 
 const AccountPage = ({ user }) => {
+  const navigate = useNavigate()
   const [posts, setPosts] = useState([]);
   const [jobListings, setJobListings] = useState([]);
   useEffect(() => {
@@ -49,7 +50,9 @@ const AccountPage = ({ user }) => {
       jobListings.filter(
         (jobListing) => jobListing._id !== deletedJobListing._id
       )
+
     );
+    navigate('/account')
   };
 
   return (
@@ -100,7 +103,6 @@ const AccountPage = ({ user }) => {
             : null}
           {user?.type === "employer" && jobListings.length > 0
             ? jobListings.map((listing) => (
-                <Link to={`/post/${listing._id}`}>
                   <Card>
                     <Flex alCenter spaceBetween>
                       <MediumText>{listing.title}</MediumText>
@@ -121,7 +123,6 @@ const AccountPage = ({ user }) => {
                       Delete Job Listing
                     </Button>
                   </Card>
-                </Link>
               ))
             : null}
         </Grid>
