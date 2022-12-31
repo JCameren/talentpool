@@ -1,6 +1,11 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import * as postAPI from "../../utilities/post-api";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getApplicationsOfUser,
+  getJobListingOfEmployer,
+  deleteJobListing,
+} from "../../store/post-slice/post-actions";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Container,
@@ -9,7 +14,6 @@ import {
   BigText,
   MediumText,
   SmallText,
-  XSText,
   Spacer,
   Card,
   Button,
@@ -19,40 +23,23 @@ import { GiPaperClip } from "react-icons/gi";
 import { SalaryFocusSpan } from "../../components/JobPost/styles";
 import Seo from "../../components/Seo";
 
-const AccountPage = ({ user }) => {
-  const navigate = useNavigate()
-  const [posts, setPosts] = useState([]);
-  const [jobListings, setJobListings] = useState([]);
-  useEffect(() => {
-    const getPosts = async () => {
-      const postFetched = await postAPI.getPostsApplied();
-      setPosts(postFetched);
-    };
-    getPosts();
-  }, []);
-
-  const unapplyFromPost = async (postId) => {
-    const unappliedFromPost = await postAPI.unapplyFromPost(postId);
-    setPosts(posts.filter((post) => post._id !== unappliedFromPost._id));
-  };
+const AccountPage = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user);
+  const posts = useSelector((state) => state.posts.allPosts);
 
   useEffect(() => {
-    const getJobsListed = async () => {
-      const jobsListingsFetched = await postAPI.getJobListings();
-      setJobListings(jobsListingsFetched);
-    };
-    getJobsListed();
-  }, []);
+    dispatch(getApplicationsOfUser());
+  }, [dispatch]);
 
-  const deleteJobListing = async (postId) => {
-    const deletedJobListing = await postAPI.deleteJobListing(postId);
-    setJobListings(
-      jobListings.filter(
-        (jobListing) => jobListing._id !== deletedJobListing._id
-      )
+  useEffect(() => {
+    dispatch(getJobListingOfEmployer());
+  }, [dispatch]);
 
-    );
-    navigate('/account')
+  const deletePost = async (postId) => {
+    dispatch(deleteJobListing(postId));
+    navigate("/account");
   };
 
   return (
@@ -101,28 +88,28 @@ const AccountPage = ({ user }) => {
                 </>
               ))
             : null}
-          {user?.type === "employer" && jobListings.length > 0
-            ? jobListings.map((listing) => (
-                  <Card>
-                    <Flex alCenter spaceBetween>
-                      <MediumText>{listing.title}</MediumText>
-                      <MediumText>
-                        <GiPaperClip />
-                      </MediumText>
-                    </Flex>
-                    <Spacer extraSmall />
-                    <SmallText>{listing.company}</SmallText>
-                    <Spacer extraSmall />
-                    <SmallText>{listing.location}</SmallText>
-                    <Spacer extraSmall />
-                    <SmallText>
-                      <SalaryFocusSpan>{listing.salary}</SalaryFocusSpan>
-                    </SmallText>
-                    <Spacer extraSmall />
-                    <Button onClick={() => deleteJobListing(listing._id)}>
-                      Delete Job Listing
-                    </Button>
-                  </Card>
+          {user?.type === "employer" && posts.length > 0
+            ? posts.map((post) => (
+                <Card>
+                  <Flex alCenter spaceBetween>
+                    <MediumText>{post.title}</MediumText>
+                    <MediumText>
+                      <GiPaperClip />
+                    </MediumText>
+                  </Flex>
+                  <Spacer extraSmall />
+                  <SmallText>{post.company}</SmallText>
+                  <Spacer extraSmall />
+                  <SmallText>{post.location}</SmallText>
+                  <Spacer extraSmall />
+                  <SmallText>
+                    <SalaryFocusSpan>{post.salary}</SalaryFocusSpan>
+                  </SmallText>
+                  <Spacer extraSmall />
+                  <Button onClick={() => deletePost(post._id)}>
+                    Delete Job Listing
+                  </Button>
+                </Card>
               ))
             : null}
         </Grid>

@@ -5,7 +5,7 @@ import Seo from "../../components/Seo/index";
 import { Container, Flex } from "../../ui";
 import hero from "../../images/homepage-hero-banner.svg";
 
-const AuthPage = ({ setUser }) => {
+const AuthPage = () => {
   return (
     <>
       <Seo title="Sign Up" description="Sign in to access a network of career opportunities!"/>
@@ -14,7 +14,7 @@ const AuthPage = ({ setUser }) => {
           <HeroBanner>
             <img src={hero} alt="hero banner" />
           </HeroBanner>
-          <SignUpForm setUser={setUser} />
+          <SignUpForm />
         </Flex>
       </Container>
     </>

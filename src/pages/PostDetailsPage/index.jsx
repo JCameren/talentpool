@@ -1,23 +1,24 @@
+import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import * as postAPI from "../../utilities/post-api";
+import { showPostDetails } from "../../store/post-slice/post-actions";
 import {
   Container,
-  Flex,
   Button,
   BigText,
   MediumText,
   SmallText,
-  XSText,
   Spacer,
 } from "../../ui/index";
 import Seo from "../../components/Seo/index";
 import { PreserveTextFormat } from "./styles";
 
-const PostDetailsPage = ({ user }) => {
+const PostDetailsPage = () => {
   const navigate = useNavigate();
-  const [postDetails, setPostDetails] = useState({});
-  const [error, setError] = useState("");
+  const dispatch = useDispatch()
+  const post = useSelector(state => state.posts.postDetails)
+  const user = useSelector(state => state.user.user)
   const { postId } = useParams();
   const {
     title,
@@ -25,39 +26,25 @@ const PostDetailsPage = ({ user }) => {
     company,
     location,
     salary,
-    createdAt,
     employer,
     applicants,
-  } = postDetails;
-  const date = new Date(createdAt);
-  const formattedDate = date.toLocaleString("en-US", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
+  } = post;
+
   useEffect(() => {
-    const getPost = async () => {
-      const postFetched = await postAPI.show(postId);
-      setPostDetails(postFetched);
-    };
-    getPost();
-  }, [postId]);
+    dispatch(showPostDetails(postId))
+  }, [postId, dispatch])
 
   const userAppliedToJobPost = async (id, post) => {
     const postApplied = await postAPI.applyToJob(id, post);
     console.log(postApplied.applicants);
     if (postApplied) navigate("/account");
-    setError("Something went wrong...");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    userAppliedToJobPost(postDetails._id, postDetails);
+    userAppliedToJobPost(post._id, post);
   };
 
-  const showApps = () => {
-    console.log(applicants);
-  };
   return (
     <>
       <Seo title={title} description={description} />

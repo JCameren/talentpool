@@ -3,10 +3,10 @@ import Footer from "../Footer/index";
 
 import React from "react";
 
-const Layout = ({ user, setUser, children }) => {
+const Layout = ({ children }) => {
   return (
     <>
-      <Navbar user={user} setUser={setUser}/>
+      <Navbar />
       {children}
       <Footer />
     </>

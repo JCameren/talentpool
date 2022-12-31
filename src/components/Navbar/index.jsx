@@ -1,14 +1,18 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { userActions } from "../../store/user-slice/user-slice";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
-import * as userService from "../../utilities/users-service";
+// import * as userService from "../../utilities/users-service";
 import { NavHeader, Logo, NavLink, MobileNavBtn, MobileNav } from "./style";
-import { Spacer, Flex, Container, Button, MediumText } from "../../ui";
+import { Spacer, Flex, Container, Button } from "../../ui";
 import Overlay from "../../components/Overlay/index";
 import logo from "../../images/logo.png";
 
-const Navbar = ({ user, setUser }) => {
-  const navigate = useNavigate();
+const Navbar = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const user = useSelector(state => state.user.user)
   const [activeTab, setActiveTab] = useState("");
   const [sideNavActive, setSideNavActive] = useState(false);
 
@@ -25,10 +29,8 @@ const Navbar = ({ user, setUser }) => {
   };
 
   const handleLogOut = () => {
-    userService.logOut();
-    setUser(null);
-    navigate("/");
-    // sideNavStateHandler()
+    dispatch(userActions.logOut())
+    navigate("/")
   };
   return (
     <>
