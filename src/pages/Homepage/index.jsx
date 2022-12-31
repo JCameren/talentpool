@@ -1,19 +1,11 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllPosts } from "../../store/post-slice/post-actions";
+import { useSelector } from "react-redux";
 import { BigText, SmallText, Spacer, Container } from "../../ui";
 import Seo from "../../components/Seo/index";
 import JobPosts from "../../components/JobPosts";
 
 const HomePage = () => {
-  const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
-  const posts = useSelector((state) => state.posts.allPosts);
   const { name } = user;
-
-  useEffect(() => {
-    dispatch(getAllPosts());
-  }, [dispatch]);
 
   return (
     <>
@@ -30,7 +22,7 @@ const HomePage = () => {
         </SmallText>
       </Container>
       <Spacer medium />
-      <JobPosts posts={posts} />
+      <JobPosts />
     </>
   );
 };

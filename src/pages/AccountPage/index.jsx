@@ -27,15 +27,16 @@ const AccountPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
-  const posts = useSelector((state) => state.posts.allPosts);
+  const posts = useSelector((state) => state.posts.userPosts);
 
   useEffect(() => {
-    dispatch(getApplicationsOfUser());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(getJobListingOfEmployer());
-  }, [dispatch]);
+    if (user.type === 'employer') {
+      dispatch(getJobListingOfEmployer());
+    } 
+    if (user.type === 'seeker') {
+      dispatch(getApplicationsOfUser());
+    }
+  }, [dispatch, user]);
 
   const deletePost = async (postId) => {
     dispatch(deleteJobListing(postId));
@@ -65,9 +66,8 @@ const AccountPage = () => {
         <Grid>
           {user?.type === "seeker" && posts.length > 0
             ? posts.map((post) => (
-                <>
-                  <Link to={`/post/${post._id}`}>
-                    <Card>
+                  <Link to={`/post/${post._id}`} key={post._id}>
+                    <Card key={post._id}>
                       <Flex alCenter spaceBetween>
                         <MediumText>{post.title}</MediumText>
                         <MediumText>
@@ -85,12 +85,11 @@ const AccountPage = () => {
                       <Spacer extraSmall />
                     </Card>
                   </Link>
-                </>
               ))
             : null}
           {user?.type === "employer" && posts.length > 0
             ? posts.map((post) => (
-                <Card>
+                <Card key={post._id}>
                   <Flex alCenter spaceBetween>
                     <MediumText>{post.title}</MediumText>
                     <MediumText>

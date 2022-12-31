@@ -1,4 +1,3 @@
-import { useState} from "react";
 import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import AuthPage from "../Auth/index";
@@ -12,12 +11,7 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme, GlobalStyle } from "../../styles/theme";
 
 const App = () => {
-  const [posts, setPosts] = useState([]);
   const user = useSelector(state => state.user.user)
-
-  const addPost = (newPost) => {
-    setPosts([...posts, newPost]);
-  };
 
   return (
     <main>
@@ -31,7 +25,7 @@ const App = () => {
                 path="/"
                 element={<HomePage />}
               />
-              <Route path="/post" element={<NewPostPage addPost={addPost} />} />
+              <Route path="/post" element={<NewPostPage />} />
               <Route
                 path="/post/:postId"
                 element={<PostDetailsPage />}

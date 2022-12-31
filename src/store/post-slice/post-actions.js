@@ -39,7 +39,7 @@ export const getApplicationsOfUser = () => {
 
     try {
       const applications = await applicationsFetched();
-      dispatch(postActions.getAllPosts(applications));
+      dispatch(postActions.getUsersPosts(applications));
     } catch (err) {
       throw new Error(
         "Retrieval of applications belonging to the user failed."
@@ -49,31 +49,46 @@ export const getApplicationsOfUser = () => {
 };
 
 export const getJobListingOfEmployer = () => {
-    return async (dispatch) => {
-        const jobListingsFetched = async () => {
-            return await postAPI.getJobListings()
-        }
+  return async (dispatch) => {
+    const jobListingsFetched = async () => {
+      return await postAPI.getJobListings();
+    };
 
-        try {
-            const jobListings = await jobListingsFetched()
-            dispatch(postActions.getAllPosts(jobListings))
-        } catch(err) {
-            throw new Error("Retrieval of job lisings posted by this user failed.")
-        }
+    try {
+      const jobListings = await jobListingsFetched();
+      dispatch(postActions.getUsersPosts(jobListings));
+    } catch (err) {
+      throw new Error("Retrieval of job lisings posted by this user failed.");
     }
-}
+  };
+};
+
+export const addNewPost = (postData) => {
+  return async (dispatch) => {
+    const addPost = async () => {
+      return await postAPI.create(postData);
+    };
+
+    try {
+      const newPost = await addPost();
+      dispatch(postActions.addPost(newPost));
+    } catch (err) {
+      throw new Error("Creation of new post failed.");
+    }
+  };
+};
 
 export const deleteJobListing = (postId) => {
-    return async (dispatch) => {
-        const deletedJobListing = async () => {
-            return await postAPI.deleteJobListing(postId)
-        }
+  return async (dispatch) => {
+    const deletedJobListing = async () => {
+      return await postAPI.deleteJobListing(postId);
+    };
 
-        try {
-            const postToBeDeleted = await deletedJobListing()
-            dispatch(postActions.deletePost(postToBeDeleted))
-        }  catch(err) {
-            throw new Error(`Failed to delete job posting`)
-        }
+    try {
+      const postToBeDeleted = await deletedJobListing();
+      dispatch(postActions.deletePost(postToBeDeleted));
+    } catch (err) {
+      throw new Error(`Failed to delete job posting`);
     }
-}
+  };
+};
