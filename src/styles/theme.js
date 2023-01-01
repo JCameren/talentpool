@@ -6,7 +6,7 @@ export const lightTheme = {
         primary: ['#665df5', '#544af4'],
         bg: '#ffffff',
         fg: '#fdfdfd',
-        muted: '#efefef'
+        muted: '#efefef',
     },
     fontSizes: {
         lg: 'clamp(2.625rem, 1.2857rem + 3.5714vw, 4rem)',

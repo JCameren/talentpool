@@ -1,4 +1,5 @@
 import { userActions } from "./user-slice";
+import { uiActions } from "../ui-slice/ui-slice";
 import * as userAPI from '../../utilities/users-api'
 import { getUser } from "../../utilities/users-service";
 
@@ -27,9 +28,21 @@ export const logInUser = (userData) => {
             return getUser()
         }
         try {
+            dispatch(uiActions.toggleNotification({
+                status: 'pending',
+                message: 'Authenticating, please wait...'
+            }))
             const user = await logIn()
             dispatch(userActions.logIn(user))
+            dispatch(uiActions.toggleNotification({
+                status: 'success',
+                message: 'Logged in was successful!'
+            }))
         } catch(err) {
+            dispatch(uiActions.toggleNotification({
+                status: 'error',
+                message: 'Login failed. Try again.'
+            }))
             throw new Error('Login in failed.')
         }
     }
